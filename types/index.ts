@@ -7,6 +7,7 @@ export interface Project {
   link: string;
   github?: string;
   image?: string;
+  favicon?: string;
 }
 
 export interface Skill {

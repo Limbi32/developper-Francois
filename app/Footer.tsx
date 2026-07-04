@@ -8,7 +8,7 @@ export default function Footer() {
       <div className="mx-auto max-w-6xl px-6">
         <p>&copy; {currentYear} François Dev. Tous droits réservés.</p>
         <div className="mt-4 flex justify-center gap-4">
-          <a href="https://github.com/francoisdigitalworks" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="hover:text-zinc-900 dark:hover:text-white transition-colors">
+          <a href="https://github.com/Limbi32" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="hover:text-zinc-900 dark:hover:text-white transition-colors">
             <GithubIcon size={20} />
           </a>
           <a href="https://linkedin.com/in/francoisdigitalworks" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:text-zinc-900 dark:hover:text-white transition-colors">

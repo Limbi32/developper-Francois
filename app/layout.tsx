@@ -17,6 +17,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Dev Portfolio | Expert Web & Mobile",
   description: "Développeur Next.js, Flutter et React Native spécialisé dans la création d'applications haute performance.",
+  icons: {
+    icon: "/icon-francois-cercle.svg",
+  },
 };
 
 export default function RootLayout({
