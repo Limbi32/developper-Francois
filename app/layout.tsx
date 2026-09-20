@@ -28,10 +28,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
-      <body className="flex min-h-full flex-col bg-zinc-50 text-zinc-900 antialiased dark:bg-black dark:text-zinc-100">
+    <html lang="fr" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased bg-slate-900 font-poppins`}>
+      <body className="flex min-h-full
+       bg-slate-800 flex-col 
+        text-zinc-900 antialiased
+          dark:text-zinc-100">
         <Header />
-        <div className="flex-1">
+        <div className="flex-1 ">
           {children}
         </div>
         <Footer />

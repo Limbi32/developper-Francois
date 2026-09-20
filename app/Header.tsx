@@ -12,7 +12,6 @@ const NAV_LINKS = [
   { href: "#projects", label: "Projets", icon: FolderGit2 },
   { href: "#skills", label: "Compétences", icon: Sparkles },
   { href: "#experience", label: "Expérience", icon: Briefcase },
-  { href: "#formation", label: "Formation", icon: GraduationCap },
 ];
 
 const panelVariants: Variants = {
@@ -35,20 +34,20 @@ export default function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-zinc-200 bg-white/90 backdrop-blur-sm dark:border-zinc-800 dark:bg-black/90">
+    <header className="sticky top-0 z-50 w-full border-b bg-slate-800 border-slate-200 backdrop-blur-sm dark:border-slate-800 dark:bg-slate-900/90">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
         {/* Logo ou Nom du site */}
         <Link
           href="/"
           onClick={() => setOpen(false)}
-          className="flex items-center gap-2 text-2xl font-bold text-zinc-900 dark:text-white"
+          className="flex items-center gap-2 text-2xl font-bold tex-emerald-400 dark:text-white"
         >
           <Image src="/icon-francois-cercle.svg" alt="Logo François" width={36} height={36} className="rounded-full" />
           François Dev
         </Link>
 
         {/* Navigation desktop */}
-        <nav className="hidden md:flex items-center space-x-6">
+        <nav className="hidden md:flex items-center space-x-6 bg-slate-800">
           {NAV_LINKS.map((link) => (
             <Link
               key={link.href}
