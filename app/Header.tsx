@@ -42,7 +42,7 @@ export default function Header() {
           onClick={() => setOpen(false)}
           className="flex items-center gap-2 text-2xl font-bold tex-emerald-400 dark:text-white"
         >
-          <Image src="/icon-francois-cercle.svg" alt="Logo François" width={36} height={36} className="rounded-full" />
+          <Image src="/icon-francois-cercle.svg" alt="Logo François" width={36} height={36} className="rounded-full text-slate-50" />
           François Dev
         </Link>
 

@@ -3,7 +3,7 @@ import CardProject from "./CardProject"
 export default function Project(){
 
     return  (
-        <div className=' flex flex-col justify-center items-center  w-ful bg-slate-900 '>
+        <div id="projects" className=' flex flex-col justify-center items-center  w-ful bg-slate-900 '>
 
         <h1 className="uppercase text-slate-400
          text-3xl relative pb-3 after:content-[''] 

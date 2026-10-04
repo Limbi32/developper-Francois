@@ -45,7 +45,7 @@ const Experiences = [
        <>
        {Experiences.map((experiences)=>(
 
-         <div key={experiences.company} className="w-5/6 bg-slate-800 border-slate-700 hover:bg-slate-700 rounded-lg px-10 py-6  flex flex-col gap-5">
+         <div key={experiences.company} className=" bg-slate-800 border-slate-700 hover:bg-slate-700 rounded-lg px-10 py-6  flex flex-col  w-full  h-full gap-5">
             <h1 className="text-slate-50">{experiences.company}</h1>
 
             <div>
