@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 import { AnimatePresence, motion, type Variants } from "framer-motion";
-import { Menu, X, Home, FolderGit2, Sparkles, Briefcase, GraduationCap } from "lucide-react";
+import { Menu, X, Home, FolderGit2, Sparkles, Briefcase } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/icons";
 
 const NAV_LINKS = [
@@ -19,7 +19,13 @@ const panelVariants: Variants = {
   visible: {
     opacity: 1,
     height: "auto",
-    transition: { duration: 0.35, ease: "easeInOut", when: "beforeChildren", staggerChildren: 0.06, delayChildren: 0.08 },
+    transition: {
+      duration: 0.35,
+      ease: "easeInOut",
+      when: "beforeChildren",
+      staggerChildren: 0.06,
+      delayChildren: 0.08,
+    },
   },
   exit: { opacity: 0, height: 0, transition: { duration: 0.25, ease: "easeInOut" } },
 };
@@ -30,29 +36,38 @@ const itemVariants: Variants = {
   exit: { opacity: 0, x: -16, transition: { duration: 0.15 } },
 };
 
+// Force les icônes SVG à prendre la couleur du texte
+const svgFix = "[&_svg]:!fill-current [&_svg_*]:!fill-current";
+
 export default function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-slate-800 border-slate-200 backdrop-blur-sm dark:border-slate-800 text-white dark:bg-slate-900/90">
+    <header className="sticky top-0 z-50 w-full border-b border-slate-800 bg-slate-900/95 text-white backdrop-blur-sm">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
-        {/* Logo ou Nom du site */}
+        {/* Logo */}
         <Link
           href="/"
           onClick={() => setOpen(false)}
-          className="flex items-center gap-2 text-2xl font-bold text-white-400"
+          className="flex items-center gap-2 text-2xl font-bold text-slate-50"
         >
-          <Image src="/icon-francois-cercle.svg" alt="Logo François" width={36} height={36} className="rounded-full text-slate-50" />
+          <Image
+            src="/icon-francois-cercle.svg"
+            alt="Logo François"
+            width={36}
+            height={36}
+            className="rounded-full"
+          />
           François Dev
         </Link>
 
         {/* Navigation desktop */}
-        <nav className="hidden md:flex items-center space-x-6 bg-slate-800">
+        <nav className="hidden md:flex items-center space-x-6">
           {NAV_LINKS.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="relative text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition-colors group"
+              className="group relative font-medium text-slate-200 transition-colors hover:text-cyan-400"
             >
               {link.label}
               <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-gradient-to-r from-blue-500 to-sky-400 transition-all duration-300 group-hover:w-full" />
@@ -60,15 +75,26 @@ export default function Header() {
           ))}
         </nav>
 
-        {/* Liens sociaux / Actions (desktop) */}
+        {/* Liens sociaux (desktop) */}
         <div className="hidden md:flex items-center gap-4">
-          <a href="https://github.com/Limbi32" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition-colors hover:scale-110 duration-200">
+          <a
+            href="https://github.com/Limbi32"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub"
+            className={`text-slate-200 transition duration-200 hover:scale-110 hover:text-cyan-400 ${svgFix}`}
+          >
             <GithubIcon size={20} />
           </a>
-          <a href="https://linkedin.com/in/francoisdigitalworks" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition-colors hover:scale-110 duration-200">
+          <a
+            href="https://linkedin.com/in/francoisdigitalworks"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+            className={`text-slate-200 transition duration-200 hover:scale-110 hover:text-cyan-400 ${svgFix}`}
+          >
             <LinkedinIcon size={20} />
           </a>
-          {/* Un bouton pour le mode sombre/clair pourrait être ajouté ici */}
         </div>
 
         {/* Bouton menu burger (mobile) */}
@@ -77,7 +103,7 @@ export default function Header() {
           onClick={() => setOpen((v) => !v)}
           aria-label={open ? "Fermer le menu" : "Ouvrir le menu"}
           aria-expanded={open}
-          className="md:hidden relative z-50 flex h-10 w-10 items-center justify-center rounded-xl border border-zinc-200 text-zinc-700 transition-colors hover:bg-zinc-100 dark:border-zinc-800 dark:text-zinc-300 dark:hover:bg-zinc-900"
+          className="md:hidden relative z-50 flex h-10 w-10 items-center justify-center rounded-xl border border-slate-600 bg-slate-800 text-slate-100 transition-colors hover:border-cyan-400 hover:text-cyan-400"
         >
           <AnimatePresence mode="wait" initial={false}>
             <motion.span
@@ -105,7 +131,7 @@ export default function Header() {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.25 }}
               onClick={() => setOpen(false)}
-              className="fixed inset-0 top-16 z-40 bg-black/40 backdrop-blur-sm md:hidden"
+              className="fixed inset-0 top-16 z-40 bg-black/50 backdrop-blur-sm md:hidden"
             />
 
             {/* Panneau menu mobile */}
@@ -115,7 +141,7 @@ export default function Header() {
               initial="hidden"
               animate="visible"
               exit="exit"
-              className="md:hidden relative z-40 overflow-hidden rounded-b-3xl border-t border-zinc-200 bg-white/95 backdrop-blur-md shadow-2xl dark:border-zinc-800 dark:bg-zinc-950/95"
+              className="md:hidden relative z-40 overflow-hidden rounded-b-3xl border-t border-slate-800 bg-slate-900 shadow-2xl"
             >
               <div className="h-1 w-full bg-gradient-to-r from-blue-500 via-sky-400 to-emerald-400" />
 
@@ -125,9 +151,9 @@ export default function Header() {
                     <Link
                       href={link.href}
                       onClick={() => setOpen(false)}
-                      className="flex items-center gap-3 rounded-xl px-3 py-3 text-base font-medium text-zinc-700 transition-all hover:translate-x-1 hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-300 dark:hover:bg-zinc-900 dark:hover:text-white"
+                      className="flex items-center gap-3 rounded-xl px-3 py-3 text-base font-medium text-slate-100 transition-all hover:translate-x-1 hover:bg-slate-800 hover:text-cyan-400"
                     >
-                      <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500/10 to-sky-400/10 text-blue-500">
+                      <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-cyan-400/10 text-cyan-400">
                         <link.icon size={18} />
                       </span>
                       {link.label}
@@ -138,12 +164,24 @@ export default function Header() {
 
               <motion.div
                 variants={itemVariants}
-                className="flex items-center gap-4 border-t border-zinc-200 px-6 py-5 dark:border-zinc-800"
+                className="flex items-center gap-4 border-t border-slate-800 px-6 py-5"
               >
-                <a href="https://github.com/Limbi32" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="rounded-lg border border-zinc-200 p-2.5 text-zinc-600 transition-all hover:scale-110 hover:bg-zinc-100 hover:text-zinc-900 dark:border-zinc-800 dark:text-zinc-400 dark:hover:bg-zinc-900 dark:hover:text-white">
+                <a
+                  href="https://github.com/Limbi32"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="GitHub"
+                  className={`rounded-lg border border-slate-600 bg-slate-800 p-2.5 text-slate-100 transition-all hover:scale-110 hover:border-cyan-400 hover:text-cyan-400 ${svgFix}`}
+                >
                   <GithubIcon size={20} />
                 </a>
-                <a href="https://linkedin.com/in/francoisdigitalworks" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="rounded-lg border border-zinc-200 p-2.5 text-zinc-600 transition-all hover:scale-110 hover:bg-zinc-100 hover:text-zinc-900 dark:border-zinc-800 dark:text-zinc-400 dark:hover:bg-zinc-900 dark:hover:text-white">
+                <a
+                  href="https://linkedin.com/in/francoisdigitalworks"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn"
+                  className={`rounded-lg border border-slate-600 bg-slate-800 p-2.5 text-slate-100 transition-all hover:scale-110 hover:border-cyan-400 hover:text-cyan-400 ${svgFix}`}
+                >
                   <LinkedinIcon size={20} />
                 </a>
               </motion.div>
