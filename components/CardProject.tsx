@@ -1,3 +1,5 @@
+import Reveal from '@/components/Reveal'
+
 export default function CardProject() {
   const Projects = [
     {
@@ -33,46 +35,49 @@ export default function CardProject() {
   return (
     <>
       {Projects.map((project, i) => (
-        <article
-          key={project.name}
-          className='group relative flex h-full flex-col gap-5 overflow-hidden rounded-2xl border border-slate-700 bg-slate-800/60 p-6 transition duration-300 hover:-translate-y-1 hover:border-cyan-400/50 hover:shadow-lg hover:shadow-cyan-500/10'
-        >
-          {/* Liseré cyan qui apparaît au survol */}
-          <div className='absolute inset-x-0 top-0 h-1 bg-cyan-400 opacity-0 transition duration-300 group-hover:opacity-100' />
+        // Reveal est l'élément le plus externe : la key est ici.
+        // delay (i % 2) : sur 2 colonnes, gauche d'abord, droite 0,1 s après.
+        <Reveal key={project.name} delay={(i % 2) * 0.1} className='h-full'>
+          <article
+            className='group relative flex h-full flex-col gap-5 overflow-hidden rounded-2xl border border-slate-700 bg-slate-800/60 p-6 transition duration-300 hover:-translate-y-1 hover:border-cyan-400/50 hover:shadow-lg hover:shadow-cyan-500/10'
+          >
+            {/* Liseré cyan qui apparaît au survol */}
+            <div className='absolute inset-x-0 top-0 h-1 bg-cyan-400 opacity-0 transition duration-300 group-hover:opacity-100' />
 
-          {/* En-tête : nom + rôle + numéro */}
-          <div className='flex items-start justify-between gap-4'>
-            <div className='flex flex-col gap-1'>
-              <h3 className='text-xl font-semibold text-slate-50'>
-                {project.name}
-              </h3>
-              <p className='text-sm text-cyan-400'>{project.role}</p>
-            </div>
-            <span className='text-sm font-medium text-slate-500'>
-              {String(i + 1).padStart(2, '0')}
-            </span>
-          </div>
-
-          {/* Description (flex-1 aligne le bas des cartes entre elles) */}
-          <p className='flex-1 text-sm leading-relaxed text-slate-300'>
-            {project.description}
-          </p>
-
-          {/* Séparateur */}
-          <div className='h-px w-full bg-slate-700' />
-
-          {/* Technologies */}
-          <div className='flex flex-wrap gap-2'>
-            {project.tech.map((t) => (
-              <span
-                key={t}
-                className='rounded-full border border-slate-600 bg-slate-900/60 px-3 py-1 text-xs text-slate-300 transition group-hover:border-cyan-400/40'
-              >
-                {t}
+            {/* En-tête : nom + rôle + numéro */}
+            <div className='flex items-start justify-between gap-4'>
+              <div className='flex flex-col gap-1'>
+                <h3 className='text-xl font-semibold text-slate-50'>
+                  {project.name}
+                </h3>
+                <p className='text-sm text-cyan-400'>{project.role}</p>
+              </div>
+              <span className='text-sm font-medium text-slate-400'>
+                {String(i + 1).padStart(2, '0')}
               </span>
-            ))}
-          </div>
-        </article>
+            </div>
+
+            {/* Description (flex-1 aligne le bas des cartes entre elles) */}
+            <p className='flex-1 text-sm leading-relaxed text-slate-300'>
+              {project.description}
+            </p>
+
+            {/* Séparateur */}
+            <div className='h-px w-full bg-slate-700' />
+
+            {/* Technologies */}
+            <div className='flex flex-wrap gap-2'>
+              {project.tech.map((t) => (
+                <span
+                  key={t}
+                  className='rounded-full border border-slate-600 bg-slate-900/60 px-3 py-1 text-xs text-slate-300 transition group-hover:border-cyan-400/40'
+                >
+                  {t}
+                </span>
+              ))}
+            </div>
+          </article>
+        </Reveal>
       ))}
     </>
   )

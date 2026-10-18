@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Reveal from '@/components/Reveal'
 
 // Données des statistiques : modifie-les facilement ici
 const stats = [
@@ -10,11 +11,11 @@ const stats = [
 
 export default function About() {
   return (
-    <section className='bg-slate-950 px-6 py-16 w-full'>
+    <section className='w-full bg-slate-950 px-6 py-16'>
       <div className='mx-auto grid max-w-6xl items-center gap-12 md:grid-cols-2'>
 
-        {/* ===== Colonne gauche : texte ===== */}
-        <div className='flex flex-col gap-5'>
+        {/* ===== Colonne gauche : texte (arrive de la gauche) ===== */}
+        <Reveal direction='left' className='flex flex-col gap-5'>
 
           {/* Badge */}
           <span className='w-fit rounded border border-slate-700 bg-slate-800 px-3 py-1 text-xs uppercase tracking-widest text-violet-300'>
@@ -33,32 +34,32 @@ export default function About() {
             propres, rapides et faciles à utiliser.
           </p>
 
-         {/* Bouton : fond plein cyan, impossible à rater */}
-<Link
-  href='/about'
-  className='inline-flex w-fit items-center rounded-xl bg-cyan-400 px-5 py-2.5 text-sm font-medium text-slate-950 transition hover:bg-cyan-300'
->
-  En savoir plus →
-</Link>
-        </div>
+          {/* Bouton */}
+          <Link
+            href='/about'
+            className='inline-flex w-fit items-center rounded-xl bg-cyan-400 px-5 py-2.5 text-sm font-medium text-slate-950 transition hover:bg-cyan-300'
+          >
+            En savoir plus →
+          </Link>
+        </Reveal>
 
-        {/* ===== Colonne droite : cartes statistiques ===== */}
+        {/* ===== Colonne droite : cartes statistiques (l'une après l'autre) ===== */}
         <div className='grid grid-cols-2 gap-4'>
-          {stats.map((s) => (
-            <div
-              key={s.label}
-              className='flex flex-col gap-3 rounded-2xl border border-slate-800 bg-slate-900 p-5 transition duration-300 hover:-translate-y-1 hover:border-cyan-400/50'
-            >
-              {/* Pastille d'icône */}
-              <div className='flex h-11 w-11 items-center justify-center rounded-xl bg-cyan-400/10 text-xl'>
-                {s.icon}
-              </div>
+          {stats.map((s, i) => (
+            <Reveal key={s.label} delay={i * 0.1} className='h-full'>
+              <div className='flex h-full flex-col gap-3 rounded-2xl border border-slate-800 bg-slate-900 p-5 transition duration-300 hover:-translate-y-1 hover:border-cyan-400/50'>
 
-              <div>
-                <p className='text-2xl font-semibold text-slate-50'>{s.value}</p>
-                <p className='text-sm text-slate-400'>{s.label}</p>
+                {/* Pastille d'icône */}
+                <div className='flex h-11 w-11 items-center justify-center rounded-xl bg-cyan-400/10 text-xl'>
+                  {s.icon}
+                </div>
+
+                <div>
+                  <p className='text-2xl font-semibold text-slate-50'>{s.value}</p>
+                  <p className='text-sm text-slate-400'>{s.label}</p>
+                </div>
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
 

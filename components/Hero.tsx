@@ -1,6 +1,7 @@
 'use client'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
+import Reveal from '@/components/Reveal'
 
 export default function Hero() {
   const router = useRouter()
@@ -14,44 +15,56 @@ export default function Hero() {
           <div className='flex flex-col items-center gap-5 text-center md:items-start md:text-left'>
 
             {/* Badge */}
-            <span className='w-fit rounded border border-slate-700 bg-slate-800 px-3 py-1 text-xs uppercase tracking-widest text-violet-300'>
-              Développeur Mobile & Web
-            </span>
+            <Reveal delay={0}>
+              <span className='w-fit rounded border border-slate-700 bg-slate-800 px-3 py-1 text-xs uppercase tracking-widest text-violet-300'>
+                Développeur Mobile & Web
+              </span>
+            </Reveal>
 
             {/* Titre */}
-            <h1 className='text-3xl font-semibold leading-tight text-slate-50 sm:text-4xl lg:text-5xl'>
-              Salut, je suis <span className='text-cyan-400'>François</span>
-              <br />
-              <span className='text-xl sm:text-2xl lg:text-4xl'>
-                Je crée des apps mobiles & web.
-              </span>
-            </h1>
+            <Reveal delay={0.1}>
+              <h1 className='text-3xl font-semibold leading-tight text-slate-50 sm:text-4xl lg:text-5xl'>
+                Salut, je suis <span className='text-cyan-400'>François</span>
+                <br />
+                <span className='text-xl sm:text-2xl lg:text-4xl'>
+                  Je crée des apps mobiles & web.
+                </span>
+              </h1>
+            </Reveal>
 
             {/* Phrase courte */}
-            <p className='max-w-md text-sm text-slate-400 sm:text-base'>
-              Full stack & IA : des applications modernes, rapides et utiles.
-            </p>
+            <Reveal delay={0.2}>
+              <p className='max-w-md text-sm text-slate-400 sm:text-base'>
+                Full stack & IA : des applications modernes, rapides et utiles.
+              </p>
+            </Reveal>
 
             {/* Boutons : empilés sur mobile, côte à côte dès sm */}
-            <div className='flex w-full flex-col gap-3 text-sm sm:w-auto sm:flex-row sm:gap-5'>
+            <Reveal
+              delay={0.3}
+              className='flex w-full flex-col gap-3 text-sm sm:w-auto sm:flex-row sm:gap-5'
+            >
               <button
                 onClick={() => router.push('/Contact')}
                 className='rounded-xl bg-cyan-400 px-5 py-3 text-center font-medium text-slate-950 transition hover:cursor-pointer hover:bg-cyan-300'
               >
                 Contactez-moi
               </button>
- <a
-  href='/CV_Francois.pdf'
-  download='CV-Limbiarisaona-Francois.pdf'
-  style={{ color: '#f8fafc' }}
-  className='flex items-center justify-center rounded-xl border-2 border-cyan-500 bg-slate-800 px-5 py-3 font-medium transition hover:cursor-pointer hover:bg-cyan-500'
->
-  <span style={{ color: 'inherit' }}>Télécharger mon CV</span>
-</a>
-            </div>
+              <a
+                href='/CV_Francois.pdf'
+                download='CV-Limbiarisaona-Francois.pdf'
+                style={{ color: '#f8fafc' }}
+                className='flex items-center justify-center rounded-xl border-2 border-cyan-500 bg-slate-800 px-5 py-3 font-medium transition hover:cursor-pointer hover:bg-cyan-500'
+              >
+                <span style={{ color: 'inherit' }}>Télécharger mon CV</span>
+              </a>
+            </Reveal>
 
             {/* Technologies */}
-            <div className='flex flex-col items-center gap-4 md:items-start'>
+            <Reveal
+              delay={0.4}
+              className='flex flex-col items-center gap-4 md:items-start'
+            >
               <span className='text-xs uppercase tracking-widest text-slate-400'>
                 Technologies que j&apos;utilise
               </span>
@@ -65,13 +78,17 @@ export default function Hero() {
                   </span>
                 ))}
               </div>
-            </div>
+            </Reveal>
 
           </div>
         </div>
 
         {/* Colonne photo : en haut sur mobile, à droite sur desktop */}
-        <div className='flex shrink-0 justify-center md:w-1/3'>
+        <Reveal
+          direction='right'
+          delay={0.2}
+          className='flex shrink-0 justify-center md:w-1/3'
+        >
           <Image
             className='h-48 w-48 rounded-full border-2 border-slate-500 object-cover shadow-2xl sm:h-56 sm:w-56 md:h-72 md:w-72'
             src='/photo.jpg'
@@ -80,7 +97,7 @@ export default function Hero() {
             alt='Photo de François'
             priority
           />
-        </div>
+        </Reveal>
 
       </div>
     </section>
