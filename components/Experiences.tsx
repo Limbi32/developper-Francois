@@ -1,24 +1,21 @@
-import CardExperiences from "./CardExperiences";
+import CardExperiences from "./CardExperiences"
 
 export default function Experiences() {
+  return (
+    <section id="experience" className='flex w-full flex-col items-center bg-slate-900 px-6 py-16'>
 
-    return (
-        <div id="experience" className="mt-10  bg-slate-900 ">
-            <div className="flex justify-center items-center">
-                <h1 className=" text-slate-400
-                     text-3xl relative pb-3 after:content-['']
-                      after:absolute after:left-0 after:bottom-0 
-                      after:h-1 after:w-12 after:bg-sky-500
-                      after:rounded-full bg-slate-900">Expériences</h1>
+      <h2 className="relative pb-3 text-3xl uppercase text-slate-400 after:absolute after:bottom-0 after:left-1/2 after:h-1 after:w-12 after:-translate-x-1/2 after:rounded-full after:bg-sky-500 after:content-['']">
+        Expériences
+      </h2>
 
-            </div>
-           <div className=" ml-3">
-             <div className="grid  grid-cols-1 md:grid-rows-2 lg:grid-cols-2  gap-5 mt-5 mx-5 py-7 justify-between items-center bg-slate-900 ">
+      <p className='mt-4 max-w-xl text-center text-sm text-slate-500'>
+        Des projets conçus de A à Z, du cadrage à la mise en production.
+      </p>
 
-                <CardExperiences />
-                
-            </div>
-           </div>
-        </div>
-    )
+      <div className='mt-10 grid w-full max-w-6xl grid-cols-1 gap-6 lg:grid-cols-2'>
+        <CardExperiences />
+      </div>
+
+    </section>
+  )
 }

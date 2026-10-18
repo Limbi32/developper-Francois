@@ -1,17 +1,21 @@
 import CardSkills from "./CardSkills"
 
 export default function Competences() {
+  return (
+    <section id="skills" className='flex w-full flex-col items-center bg-slate-950 px-6 py-16'>
 
-    return (
+      <h2 className="relative pb-3 text-3xl uppercase text-slate-400 after:absolute after:bottom-0 after:left-1/2 after:h-1 after:w-12 after:-translate-x-1/2 after:rounded-full after:bg-sky-500 after:content-['']">
+        Compétences
+      </h2>
 
-        <div id="skills" className="mt-10  bg-slate-900">
-            <div className="flex justify-center items-center"><h1 className=" text-slate-400 text-3xl relative pb-3 after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-1 after:w-12 after:bg-sky-500 after:rounded-full">Competences</h1></div>
-            <div className="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 gap-5 mt-5 mx-5 ">
-                <CardSkills />
-              
+      <p className='mt-4 max-w-xl text-center text-sm text-slate-500'>
+        Les technologies que j&apos;utilise au quotidien pour concevoir, développer et déployer.
+      </p>
 
+      <div className='mt-10 grid w-full max-w-6xl grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3'>
+        <CardSkills />
+      </div>
 
-            </div>
-        </div>
-    )
+    </section>
+  )
 }

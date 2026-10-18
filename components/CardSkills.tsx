@@ -1,46 +1,70 @@
-export default function CardSkills(){
+export default function CardSkills() {
+  const Skills = [
+    {
+      category: 'Langages',
+      icon: '💻',
+      items: ['TypeScript', 'JavaScript', 'Dart', 'SQL', 'HTML / CSS'],
+    },
+    {
+      category: 'Frontend Web',
+      icon: '🌐',
+      items: ['React.js', 'Next.js', 'Tailwind CSS', 'REST APIs', 'GraphQL'],
+    },
+    {
+      category: 'Mobile',
+      icon: '📱',
+      items: ['React Native', 'Expo', 'Flutter'],
+    },
+    {
+      category: 'Backend & Cloud',
+      icon: '☁️',
+      items: ['Node.js', 'Firebase', 'Supabase', 'AWS serverless', 'Prisma', 'PostgreSQL'],
+    },
+    {
+      category: 'IA',
+      icon: '🤖',
+      items: ['OpenAI', 'Claude', 'Gemini API', 'RAG', 'Agents', 'Vision', 'Voix'],
+    },
+    {
+      category: 'Outils & DevOps',
+      icon: '🛠️',
+      items: ['Git / GitHub', 'GitHub Actions (CI/CD)', 'Stripe', 'VPS (PM2)'],
+    },
+  ]
 
-    const Skills = [
-  {
-    category: 'Langages',
-    items: ['TypeScript', 'JavaScript', 'Dart', 'SQL', 'HTML / CSS'],
-  },
-  {
-    category: 'Frontend Web',
-    items: ['React.js', 'Next.js', 'Tailwind CSS', 'REST APIs', 'GraphQL'],
-  },
-  {
-    category: 'Mobile',
-    items: ['React Native', 'Expo', 'Flutter'],
-  },
-  {
-    category: 'Backend & Cloud',
-    items: ['Node.js', 'Firebase', 'Supabase', 'AWS serverless', 'Prisma', 'PostgreSQL'],
-  },
-  {
-    category: 'IA',
-    items: ['OpenAI', 'Claude', 'Gemini API', 'RAG', 'Agents', 'Vision', 'Voix'],
-  },
-  {
-    category: 'Outils & DevOps',
-    items: ['Git / GitHub', 'GitHub Actions (CI/CD)', 'Stripe', 'VPS (PM2)'],
-  },
-]
+  return (
+    <>
+      {Skills.map((skill) => (
+        <article
+          key={skill.category}
+          className='group flex h-full flex-col gap-5 rounded-2xl border border-slate-800 bg-slate-900 p-6 transition duration-300 hover:-translate-y-1 hover:border-cyan-400/50 hover:shadow-lg hover:shadow-cyan-500/10'
+        >
+          {/* En-tête : pastille d'icône + titre */}
+          <div className='flex items-center gap-3'>
+            <div className='flex h-11 w-11 items-center justify-center rounded-xl bg-cyan-400/10 text-xl'>
+              {skill.icon}
+            </div>
+            <h3 className='text-lg font-semibold text-slate-50'>
+              {skill.category}
+            </h3>
+          </div>
 
-    return (
-        <>
-        {Skills.map((skill)=>(
-            <div key={skill.category} className="flex flex-col w-full  gap-3 px-2 py-6 border-slate-700 justify-center items-center  hover:bg-slate-700 shadow-2xl  bg-slate-800 rounded-lg  " >
-                    <h1 className="text-slate-50">{skill.category}</h1>
-                    <div className="flex gap-2 flex-wrap ">
-                        {skill.items.map((item)=>(
-                        <div key={item} className="bg-slate-900/60 px-2 py-3 rounded-lg text-slate-400">
-                            <div>{item}</div>
-                        </div>
-                    ))}
-                    </div>
-        </div>
-        ))}
-        </>
-    )
+          {/* Séparateur */}
+          <div className='h-px w-full bg-slate-800' />
+
+          {/* Technologies */}
+          <div className='flex flex-wrap gap-2'>
+            {skill.items.map((item) => (
+              <span
+                key={item}
+                className='rounded-full border border-slate-700 bg-slate-800/60 px-3 py-1 text-xs text-slate-300 transition group-hover:border-cyan-400/30'
+              >
+                {item}
+              </span>
+            ))}
+          </div>
+        </article>
+      ))}
+    </>
+  )
 }

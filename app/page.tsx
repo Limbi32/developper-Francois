@@ -1,5 +1,6 @@
 'use client'
 
+import About from "@/components/About"
 import Competences from "@/components/Competences"
 import Experiences from "@/components/Experiences"
 import Hero from "@/components/Hero"
@@ -10,10 +11,11 @@ export default function Home() {
   return (
     <div className='flex  flex-col justify-center items-center bg-slate-900  '>
         <Hero />
-      
+         <About />
         <Project />
         <Competences />
         <Experiences />
+       
       
     </div>
   )

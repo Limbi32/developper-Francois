@@ -34,13 +34,13 @@ export default function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-slate-800 border-slate-200 backdrop-blur-sm dark:border-slate-800 dark:bg-slate-900/90">
+    <header className="sticky top-0 z-50 w-full border-b bg-slate-800 border-slate-200 backdrop-blur-sm dark:border-slate-800 text-white dark:bg-slate-900/90">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
         {/* Logo ou Nom du site */}
         <Link
           href="/"
           onClick={() => setOpen(false)}
-          className="flex items-center gap-2 text-2xl font-bold tex-emerald-400 dark:text-white"
+          className="flex items-center gap-2 text-2xl font-bold text-white-400"
         >
           <Image src="/icon-francois-cercle.svg" alt="Logo François" width={36} height={36} className="rounded-full text-slate-50" />
           François Dev

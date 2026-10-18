@@ -41,45 +41,64 @@ const Experiences = [
     tech: ['React Native', 'TypeScript', 'OpenAI', 'Supabase'],
   },
 ]
-    return (
-       <>
-       {Experiences.map((experiences)=>(
+   return (
+  <>
+    {Experiences.map((exp) => {
+      // Badge "En cours" si la période contient "aujourd'hui"
+      const enCours = exp.period.includes('aujourd')
 
-         <div key={experiences.company} className=" bg-slate-800 border-slate-700 hover:bg-slate-700 rounded-lg px-10 py-6  flex flex-col  w-full  h-full gap-5">
-            <h1 className="text-slate-50">{experiences.company}</h1>
+      return (
+        <article
+          key={exp.company}
+          className='group relative flex h-full flex-col gap-5 overflow-hidden rounded-2xl border border-slate-700 bg-slate-800/60 p-6 transition duration-300 hover:-translate-y-1 hover:border-cyan-400/50 hover:shadow-lg hover:shadow-cyan-500/10'
+        >
+          {/* Barre verticale cyan à gauche, visible au survol */}
+          <div className='absolute inset-y-0 left-0 w-1 bg-cyan-400 opacity-0 transition duration-300 group-hover:opacity-100' />
 
-            <div>
-                <div className="font-bold text-xs text-cyan-300">
-                   {experiences.role}
-                </div>
-                <div className="text-slate-400">
-                    {experiences.sector}
-                </div>
+          {/* En-tête : entreprise + rôle  |  badge */}
+          <div className='flex items-start justify-between gap-4'>
+            <div className='flex flex-col gap-1'>
+              <h3 className='text-xl font-semibold text-slate-50'>{exp.company}</h3>
+              <p className='text-sm font-medium text-cyan-400'>{exp.role}</p>
             </div>
 
-            <div className="text-xs text-slate-50">
+            {enCours && (
+              <span className='flex shrink-0 items-center gap-1.5 rounded-full border border-emerald-400/30 bg-emerald-400/10 px-2.5 py-1 text-xs text-emerald-300'>
+                <span className='h-1.5 w-1.5 rounded-full bg-emerald-400' />
+                En cours
+              </span>
+            )}
+          </div>
 
-                <div>
-                    {experiences.period}
-                </div>
+          {/* Méta : secteur · période · lieu */}
+          <div className='flex flex-wrap gap-x-4 gap-y-1 text-xs text-slate-400'>
+            <span>🏷️ {exp.sector}</span>
+            {exp.period !== 'à compléter' && <span>📅 {exp.period}</span>}
+            <span>📍 {exp.location}</span>
+          </div>
 
-                <div>{experiences.location}</div>
+          {/* Description (flex-1 aligne le bas des cartes) */}
+          <p className='flex-1 text-sm leading-relaxed text-slate-300'>
+            {exp.description}
+          </p>
 
-            </div>
+          {/* Séparateur */}
+          <div className='h-px w-full bg-slate-700' />
 
-            <div className="text-slate-300">
-                {experiences.description}
-            </div>
-             <div className="flex gap-2 flex-wrap ">
-                        {experiences.tech.map((item)=>(
-                        <div key={item} className="bg-slate-900/60 px-2 py-3 rounded-lg text-slate-400">
-                            <div>{item}</div>
-                        </div>
-                    ))}
-                    </div>
-
-        </div>
-       ))}
-       </>
-    )
+          {/* Technologies */}
+          <div className='flex flex-wrap gap-2'>
+            {exp.tech.map((t) => (
+              <span
+                key={t}
+                className='rounded-full border border-slate-600 bg-slate-900/60 px-3 py-1 text-xs text-slate-300 transition group-hover:border-cyan-400/40'
+              >
+                {t}
+              </span>
+            ))}
+          </div>
+        </article>
+      )
+    })}
+  </>
+)
 }
